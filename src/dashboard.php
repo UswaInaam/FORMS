@@ -8,12 +8,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['fullname'])) {
     header("location:main.php");
 }
 
-// session_destroy();
-// if(isset($_SESSION['logout'])){
-//     echo"<script>alert('logout successfully!')</script>";
 
-// }
-// header("location:main.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,9 +20,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['fullname'])) {
 </head>
 
 <body>
-    <form class="forms_form" action="main.php" method="post">
-        <input type="submit" value="Logout" class="forms_buttons-action">
-    </form>
+    <h1>WELCOME TO YOUR DASHBOARD</h1>
+    <a href="logout.php">Logout</a>
+    
 </body>
 
 </html>

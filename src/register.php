@@ -44,28 +44,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $mail->Host = "smtp.gmail.com";
         $mail->SMTPAuth = true;
         $mail->Username = "uswainam267@gmail.com";
-        $mail->Password = "";
+        $mail->Password = "umqn kpgz zxgm mdep";
         $mail->SMTPSecure = "tls";
         $mail->Port = "587";
-        $mail->setFrom("uswainam@267gmail.com","Uswa Inaam");
+        $mail->setFrom("uswainam@267gmail.com", "Uswa Inaam");
         $mail->addAddress($email);
         $mail->isHTML(true);
         $mail->Subject = "Verify your email";
         $mail->Body = "Click the link to verify your email: <a href='http://localhost/FORMS/src/verify.php?token=$token'>Verify Email</a>";
-        $mail->send(); 
-     echo "<script>alert('verification link has been sent to your email')</script>";
-       
- 
-
-        
+        $mail->send();
+        echo "<script>alert('verification link has been sent to your email')</script>";
     } catch (Exception $e) {
         echo "<script>alert('Error:{$e->getMessage()}')</script>";
     }
 }
-
-
-
-
-
-
 ?>
