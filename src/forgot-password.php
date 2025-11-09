@@ -31,7 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         // Generate password reset token
         $reset_token = bin2hex(random_bytes(16));
-        $reset_token_expiry = date('Y-m-d H:i:s', strtotime('+1 hour'));
+        $tz= new DateTimeZone("Asia/Karachi");
+        $expiry= new DateTime('now',$tz);
+        $expiry->modify('+1 hour');
+
+        $reset_token_expiry = $expiry->format('Y-m-d H:i:s');
 
         // Store reset token in database
         $update_query = "UPDATE auth SET reset_token='$reset_token', reset_token_expiry='$reset_token_expiry' WHERE email='$email'";
@@ -52,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $mail->addAddress($email);
                 $mail->isHTML(true);
                 $mail->Subject = "Password Reset Request";
-                $mail->Body = "Click the link to reset your password: <a href='http://localhost/auth/src/reset-password.php?token=$reset_token'>Reset Password</a><br><br>This link will expire in 1 hour.";
+                $mail->Body = "Click the link to reset your password: <a href='http://localhost/FORMS/src/reset-password.php?token=$reset_token'>Reset Password</a><br><br>This link will expire in 1 hour.";
                 $mail->send();
                 echo "<script>alert('Password reset link has been sent to your email')</script>";
             } catch (Exception $e) {
@@ -71,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
     <title>Forgot Password</title>
 </head>
 

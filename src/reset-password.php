@@ -25,6 +25,7 @@ if (isset($_GET['token']) && !empty($_GET['token'])) {
     $query = "SELECT * FROM auth WHERE reset_token='$token' AND reset_token_expiry > NOW()";
     $result = mysqli_query($connection, $query);
 
+
     if (mysqli_num_rows($result) > 0) {
         $valid_token = true;
         $row = mysqli_fetch_assoc($result);
@@ -81,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['reset_token'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
     <title>Reset Password</title>
 </head>
 

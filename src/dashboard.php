@@ -22,7 +22,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['fullname'])) {
 <body>
     <h1>WELCOME TO YOUR DASHBOARD</h1>
     <a href="logout.php">Logout</a>
-    
+
 </body>
 
 </html>
